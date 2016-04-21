@@ -22,10 +22,10 @@ $container['adapter'] = function ($c) {
     return new Adapter($c['settings']['db']);
 };
 
-$container['users'] = function ($c) {
+$container['users.gateway'] = function ($c) {
     return new TableGateway('user', $c['adapter']);
 };
 
-$container['UserController'] = function ($c) {
-    return new EntityController($c['users']);
+$container['user.controller'] = function ($c) {
+    return new EntityController($c['users.gateway']);
 };
