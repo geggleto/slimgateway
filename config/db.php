@@ -7,6 +7,8 @@
  */
 
 use SlimGateway\EntityController;
+use Zend\Db\Adapter\Adapter;
+use Zend\Db\TableGateway\TableGateway;
 
 $container['settings']['db'] = [
     'driver' => 'Pdo_Mysql',
@@ -17,11 +19,11 @@ $container['settings']['db'] = [
 ];
 
 $container['adapter'] = function ($c) {
-    return new \Zend\Db\Adapter\Adapter($c['settings']['db']);
+    return new Adapter($c['settings']['db']);
 };
 
 $container['users'] = function ($c) {
-    return new \Zend\Db\TableGateway\TableGateway('user', $c['adapter']);
+    return new TableGateway('user', $c['adapter']);
 };
 
 $container['UserController'] = function ($c) {

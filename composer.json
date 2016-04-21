@@ -10,7 +10,8 @@
   ],
   "require": {
     "slim/slim": "^3.3",
-    "zendframework/zend-db": "^2.8"
+    "zendframework/zend-db": "^2.8",
+    "vlucas/valitron": "^1.2"
   },
   "autoload" : {
     "psr-4" : {
