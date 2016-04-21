@@ -12,8 +12,9 @@ use Zend\Db\Sql\Ddl\Constraint;
 use Zend\Db\Sql\Ddl\DropTable;
 
 require "./vendor/autoload.php";
-
-$adapter = new \Zend\Db\Adapter\Adapter(include "./config/db.env.php");
+$container = array();
+include "./config/db.env.php";
+$adapter = new \Zend\Db\Adapter\Adapter($container['settings']['db']);
 
 $adapter->query("DROP TABLE IF EXISTS `users`", $adapter::QUERY_MODE_EXECUTE);
 

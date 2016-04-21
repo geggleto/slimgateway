@@ -6,7 +6,7 @@
  * Time: 1:53 PM
  */
 
-return [
+$container['settings']['db'] = [
     'driver' => 'Pdo_Mysql',
     'database' => 'test',
     'username' => 'root',

@@ -10,14 +10,12 @@ use SlimGateway\EntityController;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\TableGateway\TableGateway;
 
-$container['settings']['db'] = include "../config/db.env.php";
-
 $container['adapter'] = function ($c) {
     return new Adapter($c['settings']['db']);
 };
 
 $container['users.gateway'] = function ($c) {
-    return new TableGateway('user', $c['adapter']);
+    return new TableGateway('users', $c['adapter']);
 };
 
 $container['user.controller'] = function ($c) {

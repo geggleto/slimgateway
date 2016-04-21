@@ -10,9 +10,8 @@ $container['user.fetch.validator'] = function ($c) {
     /** @var $request \Slim\Http\Request */
     $request = $c['request'];
     $validator = new \Valitron\Validator($request->getParsedBody());
-    $validator->rule('required', 'id');
 
-    new \SlimGateway\ValidationMiddleware($validator);
+    return new \SlimGateway\ValidationMiddleware($validator);
 };
 
 $container['user.create.validator'] = function ($c) {
@@ -24,7 +23,7 @@ $container['user.create.validator'] = function ($c) {
     $validator->rule('required', 'username');
     $validator->rule('required', 'password');
 
-    new \SlimGateway\ValidationMiddleware($validator);
+    return new \SlimGateway\ValidationMiddleware($validator);
 };
 
 $container['user.update.validator'] = function ($c) {
@@ -35,14 +34,14 @@ $container['user.update.validator'] = function ($c) {
     $validator->rule('required', 'email');
     $validator->rule('required', 'username');
 
-    new \SlimGateway\ValidationMiddleware($validator);
+    return new \SlimGateway\ValidationMiddleware($validator);
 };
 
 $container['user.delete.validator'] = function ($c) {
     /** @var $request \Slim\Http\Request */
     $request = $c['request'];
     $validator = new \Valitron\Validator($request->getParsedBody());
-    $validator->rule('required', 'id');
+    
 
-    new \SlimGateway\ValidationMiddleware($validator);
+    return new \SlimGateway\ValidationMiddleware($validator);
 };

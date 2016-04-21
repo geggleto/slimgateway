@@ -21,7 +21,16 @@
       "SlimGateway\\" : "src"
     }
   },
+  "autoload-dev" : {
+    "psr-4" : {
+      "SlimGateWay\\Tests\\" : "tests"
+    }
+  },
   "scripts" : {
-    "migrate:users" : "php ./migrations/users.php"
+    "migrate:users" : "php ./migrations/users.php",
+    "test" : [
+      "@migrate:users",
+      "phpunit"
+    ]
   }
 }

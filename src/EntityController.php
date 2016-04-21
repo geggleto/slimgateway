@@ -42,12 +42,12 @@ class EntityController
     }
 
     /**
-     * @param Request $request
+     * @param array $args
      * @return array
      */
-    protected function getIdArray(Request $request) {
+    protected function getIdArray(array $args) {
         return [
-            $this->pk_column => $request->getParsedBody()[$this->pk_column]
+            $this->pk_column => $args[$this->pk_column]
         ];
     }
 
@@ -61,11 +61,11 @@ class EntityController
      */
     public function fetch(Request $request, Response $response, $args) {
         try {
-            $result = $this->gateway->select($this->getIdArray($request))->current();
+            $result = $this->gateway->select(['id' => 1])->current();
 
-            return $response->withJson($result->getArrayCopy());
+            return $response->withJson($result->getArrayCopy(), 200);
         } catch (\Exception $e) {
-            return $response->withStatus(400);
+              return $response->withStatus(400);
         }
     }
 
@@ -81,7 +81,7 @@ class EntityController
            $this->gateway->insert($request->getParsedBody());
            return $response->withJson(["result" => $this->gateway->lastInsertValue]);
         } catch (\Exception $e) {
-            return $response->withStatus(400);
+            return $response->withStatus(400, $e->getMessage());
         }
     }
 
@@ -94,8 +94,8 @@ class EntityController
      */
     public function update(Request $request, Response $response, $args) {
         try {
-            $result = $this->gateway->update($args['id'], $request->getParsedBody());
-            return $response->withJson(["message" => $result]);
+            $result = $this->gateway->update($request->getParsedBody(), $this->getIdArray($args));
+            return $response->withJson(["result" => $result]);
         } catch (\Exception $e) {
             return $response->withStatus(400);
         }
@@ -110,8 +110,8 @@ class EntityController
      */
     public function remove(Request $request, Response $response, $args) {
         try {
-            $result = $this->gateway->delete($this->getIdArray($request));
-            return $response->withJson(["message" => $result]);
+            $result = $this->gateway->delete($this->getIdArray($args));
+            return $response->withJson(["result" => $result]);
         } catch (\Exception $e) {
             return $response->withStatus(400);
         }
