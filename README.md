@@ -89,3 +89,10 @@ $app->delete('/users/{id}', 'user.controller:remove')->add('user.delete.validato
 # Unit Testing
 `composer test`
 
+# Where to go from here
+This is purely a backend solution. The next logical step might be trying 
+to send out an email, or encrypt the user password. Both of these functions 
+would be middleware when using this package. 
+
+Middleware is the perfect spot for running code before and after your data
+is persisted.
