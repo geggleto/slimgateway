@@ -1,0 +1,20 @@
+{
+  "name": "geggleto/slimgateway",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Glenn Eggleton",
+      "email": "geggleto@gmail.com"
+    }
+  ],
+  "require": {
+    "slim/slim": "^3.3",
+    "zendframework/zend-db": "^2.8"
+  },
+  "autoload" : {
+    "psr-4" : {
+      "SlimGateway\\" : "src"
+    }
+  }
+}
