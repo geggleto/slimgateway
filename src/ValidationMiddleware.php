@@ -38,7 +38,7 @@ class ValidationMiddleware
         if($this->validator->validate()) {
             return $next($request, $response);
         } else {
-            return $response->withJson($v->errors());
+            return $response->withJson($this->validator->errors());
         }
     }
 }
