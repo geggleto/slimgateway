@@ -10,13 +10,7 @@ use SlimGateway\EntityController;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\TableGateway\TableGateway;
 
-$container['settings']['db'] = [
-    'driver' => 'Pdo_Mysql',
-    'database' => 'test',
-    'username' => 'root',
-    'password' => '',
-    'hostname' => '127.0.0.1'
-];
+$container['settings']['db'] = include "../config/db.env.php";
 
 $container['adapter'] = function ($c) {
     return new Adapter($c['settings']['db']);

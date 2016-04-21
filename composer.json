@@ -20,5 +20,8 @@
     "psr-4" : {
       "SlimGateway\\" : "src"
     }
+  },
+  "scripts" : {
+    "migrate:users" : "php ./migrations/users.php"
   }
 }
