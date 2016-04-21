@@ -1,5 +1,5 @@
 # Slim Gateway
-    Take the boilerplate out of your day. Need a simple API to insert data into SQL Tables? This is for you.
+Take the boilerplate out of your day. Need a simple API to insert data into SQL Tables? This is for you.
 
 # Setup
  - Change the contents of `config/db.php` to connect to your database
