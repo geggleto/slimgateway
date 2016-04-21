@@ -16,7 +16,7 @@ There is a cavet for validation. Validation will only take place on the initial 
 # Migrations
  - Add more migrations in the `/migrations/` folder
  - Add a composer command to make running them easy!
-
+ - Make sure to add the composer command to the unit tests when you do then too!
 
 # Example
 
@@ -82,3 +82,8 @@ $app->post('/users', 'user.controller:create')->add('user.create.validator');
 $app->put('/users/{id}', 'user.controller:update')->add('user.update.validator');
 $app->delete('/users/{id}', 'user.controller:remove')->add('user.delete.validator');
 ```
+
+
+# Unit Testing
+`composer test`
+
