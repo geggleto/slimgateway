@@ -9,6 +9,8 @@ Take the boilerplate out of your day. Need a simple API to insert data into SQL 
     - Define your routes in `config/routes.php`
     - Run the users migration `composer migrate:users`
     
+# Install
+    `php composer.phar create-project geggleto/slimgateway [my-app-name]`
     
 # Validation
 There is a cavet for validation. Validation will only take place on the initial data set, anything you add in via middleware is not available for validation.
